@@ -48,8 +48,6 @@ public class ALFecuAntApp extends JFrame {
         setLayout(new BorderLayout());
         JPanel ALTopPanel = new JPanel(new BorderLayout());
 
-        // JLabel ALimagenLabel = new JLabel(new
-        // ImageIcon("src/ALGUI/ALResource/ALHormiga.jpg"));
         JLabel ALimagenLabel = new JLabel(new ImageIcon("src/ALGUI/ALResource/Logo.jpg"));
         JLabel ALTitleLabel = new JLabel("Hormiguero Virtual", SwingConstants.CENTER);
         ALTitleLabel.setFont(new Font("Arial", Font.BOLD, 14));
@@ -109,9 +107,9 @@ public class ALFecuAntApp extends JFrame {
         JPanel statusBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel programingLabel = new JLabel("Programacion II");
         JLabel cedulaLabel = new JLabel("Cedula: 1753193828");
-        JLabel nombreLabel = new JLabel("Nombres: Lenin Amangandi");
+        JLabel nombreLabel = new JLabel("Nombres: Lenin Alexander Amangandi Llumiguano");
 
-        // statusBar.add(new JLabel("          "));
+        // statusBar.add(new JLabel(" "));
         statusBar.add(programingLabel);
         statusBar.add(new JLabel(" | "));
         statusBar.add(cedulaLabel);
