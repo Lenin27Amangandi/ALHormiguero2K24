@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -24,12 +25,14 @@ import java.awt.event.ActionEvent;
 import ALBusinessLogic.ALCarnivoro;
 import ALBusinessLogic.ALGenoAlimento;
 import ALBusinessLogic.ALHervivoro;
+import ALBusinessLogic.ALHormigaBL;
 import ALBusinessLogic.ALIngestaNativa;
 import ALBusinessLogic.ALInsectivoro;
 import ALBusinessLogic.ALNectarivoros;
 import ALBusinessLogic.ALOmnivoro;
 import ALBusinessLogic.AL_XX;
 import ALBusinessLogic.AL_XY;
+import ALDataAccess.ALDTO.ALHormigaDTO;
 import ALBusinessLogic.AL_X;
 
 import javax.swing.JComboBox;
@@ -39,6 +42,14 @@ public class ALFecuAntApp extends JFrame {
 
     public ALFecuAntApp() {
         ALcustumerControls();
+        initHormigas();
+    }
+
+    private void initHormigas() {
+        ALHormigaBL hormigaBl = new ALHormigaBL();
+        ALHormigaDTO nuevaHormiga = new ALHormigaDTO("ID1", "Tipo1", "Sexo1", "Carnívoro", "X", "Viva");
+        hormigaBl.crearHormiga(nuevaHormiga);
+        List<ALHormigaDTO> hormigas = hormigaBl.obtenerHormigas();
     }
 
     private void ALcustumerControls() {
