@@ -1,4 +1,4 @@
-package ALBusinessLogic;
+package ALBusinessLogic.ALEntities;
 
 public class AL_XX extends ALGenoAlimento {
 
