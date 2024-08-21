@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 
 import java.awt.GridLayout;
@@ -71,7 +72,11 @@ public class ALFecuAntApp extends JFrame {
         String[] ALcolumnasName = { "Registro", "TipoHormiga", "Sexo", "IngestaNativa", "GenoAlimento",
                 "Estado", "Ubicacion" };
         Object[][] ALdata = new Object[8][7];
-        JTable table = new JTable(ALdata, ALcolumnasName);
+
+        DefaultTableModel tableModel = new DefaultTableModel(ALdata, ALcolumnasName);
+        JTable table = new JTable(tableModel);
+
+        // JTable table = new JTable(ALdata, ALcolumnasName);
         JScrollPane ALScrollPane = new JScrollPane(table);
 
         JPanel ALcomboPanel = new JPanel();
@@ -108,6 +113,62 @@ public class ALFecuAntApp extends JFrame {
         JPanel ALcomboButtonPanel = new JPanel(new BorderLayout());
         ALcomboButtonPanel.add(ALcomboPanel, BorderLayout.NORTH);
         ALcomboButtonPanel.add(ALbtnPanel, BorderLayout.SOUTH);
+
+        //// Añadir ActionListener para el botón Crear Larva
+        ALbtnCrear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Contar las filas actuales
+                int rowCount = table.getRowCount();
+                // Encontrar la primera fila vacía
+                int rowToInsert = -1;
+                for (int i = 0; i < rowCount; i++) {
+                    if (table.getValueAt(i, 0) == null) {
+                        rowToInsert = i;
+                        break;
+                    }
+                }
+
+                if (rowToInsert != -1) {
+                    // Crear una nueva fila con los datos predeterminados
+                    table.setValueAt(rowToInsert + 1, rowToInsert, 0); // Registro
+                    table.setValueAt("Larva", rowToInsert, 1); // TipoHormiga
+                    table.setValueAt("Asexual", rowToInsert, 2); // Sexo
+                    table.setValueAt("", rowToInsert, 3); // IngestaNativa (vacío)
+                    table.setValueAt("", rowToInsert, 4); // GenoAlimento (vacío)
+                    table.setValueAt("Vivo", rowToInsert, 5); // Estado
+                    table.setValueAt("Sola", rowToInsert, 6); // Ubicacion
+                } else {
+                    // Si no hay filas vacías, añadir una nueva fila
+                    Object[] newRow = { rowCount + 1, "Larva", "Asexual", "", "", "Vivo", "Sola" };
+                    ((DefaultTableModel) table.getModel()).addRow(newRow);
+                }
+            }
+        });
+
+        // Añadir ActionListener para el botón Guardar
+        ALbtnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int rowCount = table.getRowCount();
+                for (int i = 0; i < rowCount; i++) {
+                    if (table.getValueAt(i, 0) != null) { // Verificar que la fila no esté vacía
+                        ALHormigaDTO hormiga = new ALHormigaDTO(
+                                table.getValueAt(i, 0).toString(), // Registro
+                                table.getValueAt(i, 1).toString(), // TipoHormiga
+                                table.getValueAt(i, 2).toString(), // Sexo
+                                table.getValueAt(i, 3).toString(), // IngestaNativa
+                                table.getValueAt(i, 4).toString(), // GenoAlimento
+                                table.getValueAt(i, 5).toString() // Estado
+                        );
+
+                        // Guardar la hormiga en el archivo CSV
+                        ALHormigaBL hormigaBl = new ALHormigaBL();
+                        hormigaBl.crearHormiga(hormiga);
+                    }
+                }
+            }
+        });
 
         // Panel Principal que cnotiene las tablas y el panel
         JPanel ALmainPanel = new JPanel(new BorderLayout());
