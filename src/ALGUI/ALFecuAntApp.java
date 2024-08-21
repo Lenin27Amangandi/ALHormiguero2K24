@@ -43,15 +43,16 @@ public class ALFecuAntApp extends JFrame {
 
     public ALFecuAntApp() {
         ALcustumerControls();
-        initHormigas();
+        // initHormigas();
     }
 
-    private void initHormigas() {
-        ALHormigaBL hormigaBl = new ALHormigaBL();
-        ALHormigaDTO nuevaHormiga = new ALHormigaDTO("ID1", "Tipo1", "Sexo1", "Carnívoro", "X", "Viva");
-        hormigaBl.crearHormiga(nuevaHormiga);
-        List<ALHormigaDTO> hormigas = hormigaBl.obtenerHormigas();
-    }
+    // private void initHormigas() {
+    // ALHormigaBL hormigaBl = new ALHormigaBL();
+    // ALHormigaDTO nuevaHormiga = new ALHormigaDTO("ID1", "Tipo1", "Sexo1",
+    // "Carnívoro", "X", "Viva");
+    // hormigaBl.crearHormiga(nuevaHormiga);
+    // List<ALHormigaDTO> hormigas = hormigaBl.obtenerHormigas();
+    // }
 
     private void ALcustumerControls() {
         setTitle("EcuAnt2k24");
@@ -146,26 +147,33 @@ public class ALFecuAntApp extends JFrame {
             }
         });
 
-        // Añadir ActionListener para el botón Guardar
         ALbtnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int rowCount = table.getRowCount();
-                for (int i = 0; i < rowCount; i++) {
-                    if (table.getValueAt(i, 0) != null) { // Verificar que la fila no esté vacía
-                        ALHormigaDTO hormiga = new ALHormigaDTO(
-                                table.getValueAt(i, 0).toString(), // Registro
-                                table.getValueAt(i, 1).toString(), // TipoHormiga
-                                table.getValueAt(i, 2).toString(), // Sexo
-                                table.getValueAt(i, 3).toString(), // IngestaNativa
-                                table.getValueAt(i, 4).toString(), // GenoAlimento
-                                table.getValueAt(i, 5).toString() // Estado
-                        );
+                int lastNonEmptyRow = -1;
 
-                        // Guardar la hormiga en el archivo CSV
-                        ALHormigaBL hormigaBl = new ALHormigaBL();
-                        hormigaBl.crearHormiga(hormiga);
+                // Buscar la última fila no vacía
+                for (int i = 0; i < rowCount; i++) {
+                    if (table.getValueAt(i, 0) != null) {
+                        lastNonEmptyRow = i;
                     }
+                }
+
+                // Si se encontró una fila no vacía
+                if (lastNonEmptyRow != -1) {
+                    ALHormigaDTO hormiga = new ALHormigaDTO(
+                            table.getValueAt(lastNonEmptyRow, 0).toString(), // Registro
+                            table.getValueAt(lastNonEmptyRow, 1).toString(), // TipoHormiga
+                            table.getValueAt(lastNonEmptyRow, 2).toString(), // Sexo
+                            table.getValueAt(lastNonEmptyRow, 3).toString(), // IngestaNativa
+                            table.getValueAt(lastNonEmptyRow, 4).toString(), // GenoAlimento
+                            table.getValueAt(lastNonEmptyRow, 5).toString() // Estado
+                    );
+
+                    // Guardar la última hormiga en el archivo CSV
+                    ALHormigaBL hormigaBl = new ALHormigaBL();
+                    hormigaBl.crearHormiga(hormiga);
                 }
             }
         });
@@ -187,7 +195,6 @@ public class ALFecuAntApp extends JFrame {
         statusBar.add(cedulaLabel);
         statusBar.add(new JLabel(" | "));
         statusBar.add(nombreLabel);
-
         add(ALTopPanel, BorderLayout.NORTH);
         add(ALmainPanel, BorderLayout.CENTER);
         add(statusBar, BorderLayout.PAGE_END);

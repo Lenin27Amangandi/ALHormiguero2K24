@@ -7,10 +7,11 @@ import ALDataAccess.ALDTO.ALHormigaDTO;
 
 public class ALHormigaBL {
 
-        private ALHormigaDAO hormigaDAO = new ALHormigaDAO();
+    private ALHormigaDAO hormigaDAO = new ALHormigaDAO();
 
     public void crearHormiga(ALHormigaDTO hormiga) {
-        // Implementar la lógica para definir el sexo, tipo, estado basado en genoAlimento e ingestaNativa
+        // Implementar la lógica para definir el sexo, tipo, estado basado en
+        // genoAlimento e ingestaNativa
         if (hormiga.getGenoAlimento().equals("X") && hormiga.getIngestaNativa().equals("Carnívoro")) {
             hormiga.setSexo("Macho");
             hormiga.setEstado("Guerrero");
