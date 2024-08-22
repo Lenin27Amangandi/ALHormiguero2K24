@@ -7,14 +7,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ALException extends Exception {
+
     public ALException(String e, String clase, String metodo) {
-        System.out.println("[ERROR APP --> LOG] " + clase + "." + metodo + " : " + e);
+        super(e);
+        logError(e, clase, metodo);
+        ALConstrols.showMsgError(getCustomMessage());
     }
+
+    // public ALException(String e, String clase, String metodo) {
+    // System.out.println("[ERROR APP --> LOG] " + clase + "." + metodo + " : " +
+    // e);
+    // }
 
     private void logError(String e, String clase, String metodo) {
         String fechaHora = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String mensajeLog = "[ERROR APP --> LOG] " + clase + "." + metodo + " : " + e + " [" + fechaHora + "]";
-        System.out.println(mensajeLog);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("ALData/ALHormigueroErrorLog.txt", true))) {
             writer.write(mensajeLog);
@@ -24,8 +31,13 @@ public class ALException extends Exception {
         }
     }
 
+    private String getCustomMessage() {
+        return "Ups, se presentó un error.";
+    }
+
     @Override
     public String getMessage() {
-        return "Ups se presento un error..";
+        return getCustomMessage();
     }
+
 }

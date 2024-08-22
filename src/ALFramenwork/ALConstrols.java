@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 public class ALConstrols {
 
+    // public static final String RUTA_ARCHIVO_CSV = "ALData/ALHormigueroRegistro.csv";
     public static final String RUTA_ARCHIVO_CSV = "ALData/ALHormigueroRegistro.csv";
     public static final String RUTA_ARCHIVO_TXT = "ALData/ALHormiguero.txt";
 
@@ -30,7 +31,7 @@ public class ALConstrols {
     }
 
     public static final void showMsgError(String msg) {
-        JOptionPane.showMessageDialog(null, msg, "💀 IABot", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, msg, "💀Ups sucedio un problema", JOptionPane.OK_OPTION);
     }
 
     public static final boolean showConfirmYesNo(String msg) {
