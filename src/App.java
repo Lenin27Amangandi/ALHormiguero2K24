@@ -5,16 +5,13 @@ import ALGUI.ALFecuAntApp;
 public class App {
     public static void main(String[] args) throws Exception {
 
+        // new PruebaTRYCat(4, 0);
+
         try {
-            int suma = 9 / 0;
+            new ALFecuAntApp();
         } catch (Exception e) {
-            throw new ALException("e", "getClass().getSimpleName()", "Create: ");
+            System.out.println("No se pudo");
         }
-        // try {
-        //     new ALFecuAntApp();
-        // } catch (Exception e) {
-        //     System.out.println("No se pudo");
-        // }
 
         // try {
         // ALGuardarDatos guardarDatos = new ALGuardarDatos();
