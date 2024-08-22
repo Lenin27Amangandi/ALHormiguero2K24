@@ -1,0 +1,2 @@
+[ERROR APP --> LOG] PruebaTRYCat., Constrcutor PruebaTRYCat : / by zero [2024-08-21 21:54:56]
+[ERROR APP --> LOG] PruebaTRYCat., Constrcutor PruebaTRYCat : / by zero [2024-08-21 21:56:40]

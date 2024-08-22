@@ -4,16 +4,23 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
-public class ALConstrols {
+public abstract class ALConstrols {
 
-    // public static final String RUTA_ARCHIVO_CSV = "ALData/ALHormigueroRegistro.csv";
+    // public static final String RUTA_ARCHIVO_CSV =
+    // "ALData/ALHormigueroRegistro.csv";
     public static final String RUTA_ARCHIVO_CSV = "ALData/ALHormigueroRegistro.csv";
     public static final String RUTA_ARCHIVO_TXT = "ALData/ALHormiguero.txt";
 
-    public static final URL URL_ALHormigueroTXT = ALConstrols.class.getResource(RUTA_ARCHIVO_TXT);
+    public static final URL URL_ALHormigueroTXT = ALConstrols.class.getResource("ALData/ALHormiguero.txt");
+    // public static final URL URL_ALHormigueroTXT =
+    // ALConstrols.class.getResource(RUTA_ARCHIVO_TXT);
     public static final URL URL_ALHormigueroRegistroCVS = ALConstrols.class
-                            .getResource("/ALHormiguero2K24/" + RUTA_ARCHIVO_CSV);
-    public static final URL URL_Logo = ALConstrols.class.getResource("src/ALGUI/ALResource/Logo.jpg");
+            .getResource("/ALHormiguero2K24/ALData/ALHormigueroRegistro.csv");
+    // public static final URL URL_ALHormigueroRegistroCVS = ALConstrols.class
+    // .getResource("/ALHormiguero2K24/" + RUTA_ARCHIVO_CSV);
+    // public static final URL URL_Logo =
+    // ALConstrols.class.getResource("src/ALGUI/ALResource/ALLogo.jpg");
+    public static final URL URL_LOGO = ALConstrols.class.getResource("/ALGUI/ALResource/ALLogo.jpg");
 
     // String rutaArchivoCVS = "ALData/ALHormigueroRegistro.csv";
     // String rutaArchivoTXT = "ALData/ALHormiguero.txt";
