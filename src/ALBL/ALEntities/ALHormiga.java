@@ -15,7 +15,6 @@ public abstract class ALHormiga implements IALHormiga {
 
     @Override
     public boolean comer(ALAlimento alimento) {
-
         return false;
     }
 

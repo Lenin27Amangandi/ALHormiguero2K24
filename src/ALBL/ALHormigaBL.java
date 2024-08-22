@@ -13,8 +13,6 @@ public class ALHormigaBL {
     public void crearHormiga(ALHormigaDTO hormiga) {
         // Implementar la lógica para definir el sexo, tipo, estado basado en
         // genoAlimento e ingestaNativa
-
-
         if (hormiga.getGenoAlimento().equals("X") && hormiga.getIngestaNativa().equals("Carnívoro")) {
             hormiga.setSexo("Macho");
             hormiga.setEstado("Guerrero");

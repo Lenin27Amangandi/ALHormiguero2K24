@@ -1,10 +1,9 @@
 package ALBL.ALEntities;
 
-public  class AL_XY extends ALGenoAlimento {
+public class AL_XY extends ALGenoAlimento {
 
     public AL_XY() {
         tipo = "XY";
     }
-
 
 }

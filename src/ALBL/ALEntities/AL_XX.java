@@ -6,5 +6,4 @@ public class AL_XX extends ALGenoAlimento {
         tipo = "XX";
     }
 
-
 }

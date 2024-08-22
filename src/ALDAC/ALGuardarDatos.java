@@ -33,8 +33,9 @@ public class ALGuardarDatos {
 
         // File archivo = new File(rutaArchivo);
         // if (!archivo.exists()) {
-        //     throw new ALException("El archivo CSV no se encuentra en la ubicación especificada: " + rutaArchivo,
-        //             "ALGuardarDatos", "AlGuardarCVS");
+        // throw new ALException("El archivo CSV no se encuentra en la ubicación
+        // especificada: " + rutaArchivo,
+        // "ALGuardarDatos", "AlGuardarCVS");
         // }
 
         // try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo,
@@ -59,6 +60,7 @@ public class ALGuardarDatos {
                     + " , " + this.estado);
             writer.newLine();
         } catch (IOException e) {
+
             try {
                 throw new ALException("No se pudo encontrar o acceder al archivo: " + rutaArchivo, "ALGuardarDatos",
                         "AlGuardarCVS");

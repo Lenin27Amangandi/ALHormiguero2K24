@@ -5,7 +5,7 @@ import ALGUI.ALEcuAntApp;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        new PruebaTRYCat(4, 0);
+        //new PruebaTRYCat(4, 0);
 
         try {
             new ALEcuAntApp();
